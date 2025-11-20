@@ -26,7 +26,6 @@
   filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.6));
 }
 
-/* Hover scale effect - uses CSS custom property or works with inline transform */
 .skill-icon:hover {
   transform: translate(-50%, -50%) scale(1.15) !important;
 }
