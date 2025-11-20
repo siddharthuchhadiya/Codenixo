@@ -87,7 +87,6 @@ export function Globe({ size = "auto" }) {
     return () => globe.destroy();
   }, [globeSize, prefersReducedMotion]);
 
-  // ---------- ❌ WebGL Disabled ----------
   if (disabledWebGL) {
     return (
       <div className="flex justify-center">
@@ -98,7 +97,6 @@ export function Globe({ size = "auto" }) {
     );
   }
 
-  // ---------- 🎨 Render Canvas ----------
   return (
     <div className="flex justify-center">
       <canvas
