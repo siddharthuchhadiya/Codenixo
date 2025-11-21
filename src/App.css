@@ -1,41 +1,11 @@
 @import "tailwindcss";
 
-.spinner {
-  position: absolute;
-  animation: orbit 35s linear infinite;
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes orbit {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.spin-slow {
+  animation: spin-slow 40s linear infinite;
 }
 
-.skill-icon {
-  position: absolute;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
-  transform-origin: center;
-  transition: filter 0.3s ease, transform 0.3s ease;
-  z-index: 10;
-}
-
-.skill-icon:hover {
-  filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.6));
-}
-
-.skill-icon:hover {
-  transform: translate(-50%, -50%) scale(1.15) !important;
-}
-
-@media (max-width: 640px) {
-  .skill-icon {
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
-  }
-  
-  .skill-icon:hover {
-    filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5));
-  }
-}
