@@ -43,11 +43,9 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5 opacity-0 transition-opacity duration-500 hover:opacity-100" />
       
       <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between relative">
-        {/* Logo with Animation */}
         <div className="flex items-center space-x-2 group cursor-pointer">
           <div className="relative">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
@@ -60,7 +58,6 @@ export default function Header() {
           </h1>
         </div>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex items-center space-x-1">
           <li>
             <a
@@ -72,7 +69,6 @@ export default function Header() {
             </a>
           </li>
 
-          {/* Features Dropdown */}
           <li className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -131,9 +127,7 @@ export default function Header() {
           </li>
         </ul>
 
-        {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-3">
-          {/* Dark Mode Toggle */}
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
@@ -149,7 +143,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -158,7 +151,6 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-t border-gray-200/50 dark:border-gray-700/50 px-6 py-6 space-y-4 animate-slide-down">
           <a className="block py-3 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 border-b border-gray-100 dark:border-gray-800">
