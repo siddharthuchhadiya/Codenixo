@@ -1,5 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Cloud,
+  Code,
+  Shield,
+  Database,
+  Smartphone,
+  Server,
+} from "lucide-react";
 import { ROUTES } from "../utils/Routes";
 
 export default function Header() {
@@ -28,16 +38,12 @@ export default function Header() {
     };
   }, []);
 
-  const features = [
-    { name: "AI Assistant" },
-    { name: "Analytics" },
-    { name: "Security" },
-  ];
-
   const menuItems = [
     { name: "Home", href: ROUTES.HOME },
-    { name: "Services", href: ROUTES.SERVICES },
     { name: "About", href: ROUTES.ABOUT },
+    { name: "Services", href: ROUTES.SERVICES },
+    { name: "Portfolio", href: ROUTES.PORTFOLIO },
+    { name: "Blog", href: ROUTES.BLOG },
     { name: "Contact", href: ROUTES.CONTACT },
   ];
 
@@ -45,143 +51,130 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-700/50"
-          : "bg-transparent"
+          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-700/50"
+          : "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between relative">
-        <div className="flex mt-3 items-center space-x-2 group cursor-pointer">
-          <img
-            src="/public/assets/Group 4.png"
-            alt="CODONIXO Logo"
-            className="w-45 h-auto rounded-xl object-cover"
-          />
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center flex-1">
+            <div className="relative">
+              <img
+                src="/public/assets/Group 4.png"
+                alt="CODONIXO Logo"
+                className="w-full h-11 sm:w-20 sm:h-20 lg:w-full lg:h-15 rounded-xl object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1 flex-shrink-0">
+            {menuItems.map((item) => (
+              <div key={item.name} className="relative">
+                {item.hasDropdown ? (
+                  <div ref={dropdownRef} className="relative">
+                    <button
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className="flex items-center space-x-1 px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 group"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-300 ${
+                          dropdownOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {/* Services Mega Menu */}
+                    {dropdownOpen && (
+                      <div className="absolute top-full left-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 backdrop-blur-xl">
+                        <div className="p-4">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                            Our Services
+                          </h3>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                  >
+                    {item.name}
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="lg:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 flex-shrink-0"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        <ul className="hidden md:flex items-center space-x-1">
-          <li>
-            <a
-              href={ROUTES.HOME}
-              className="relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 group"
+        {/* Mobile Navigation */}
+        {mobileOpen && (
+          <div className="lg:hidden fixed inset-0 z-50  bg-black/70 backdrop-blur-sm flex flex-col">
+            {/* Close Button - Top Right */}
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-6 right-6 z-50 p-3 rounded-full bg-black/30 backdrop-blur-xl border border-white/20 hover:bg-black/40 hover:scale-110 hover:shadow-2xl transition-all duration-300 group"
             >
-              Home
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-4/5 group-hover:left-1/10" />
-            </a>
-          </li>
+              <X
+                size={20}
+                className="text-white group-hover:rotate-90 transition-transform duration-300"
+              />
+            </button>
 
-          <li>
-            <a
-              href={ROUTES.SERVICES}
-              className="relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 group"
-            >
-              Services
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-4/5 group-hover:left-1/10" />
-            </a>
-          </li>
-
-          <li>
-            <a
-              href={ROUTES.ABOUT}
-              className="relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 group"
-            >
-              About
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-4/5 group-hover:left-1/10" />
-            </a>
-          </li>
-
-          <li>
-            <a
-              href={ROUTES.CONTACT}
-              className="relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-lg transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 group"
-            >
-              Contact
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-4/5 group-hover:left-1/10" />
-            </a>
-          </li>
-        </ul>
-
-        <button
-          className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-
-      
-      {mobileOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-black/20 backdrop-blur-sm">
-          
-          <button
-            onClick={() => setMobileOpen(false)}
-            className="absolute top-6 right-6 z-60 p-3 rounded-full bg-black/20 backdrop-blur-xl border border-white/20 hover:bg-black/30 hover:scale-110 hover:shadow-2xl transition-all duration-300 group"
-          >
-            <X
-              size={24}
-              className="text-white group-hover:rotate-90 transition-transform duration-300"
-            />
-          </button>
-
-          {/* Centered Menu Content */}
-          <div className="h-full flex flex-col items-center justify-center px-6">
-            {/* Menu Items - Clean Design */}
-            <div className="w-full max-w-sm space-y-3">
-              {/* Main Menu Items */}
-              {menuItems.map((item, index) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="group block w-full text-center px-6 py-5 rounded-2xl bg-black/10 backdrop-blur-xl border border-white/10 text-white font-semibold text-xl hover:bg-black/20 hover:border-white/20 hover:scale-105 hover:shadow-2xl transition-all duration-500"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="relative">
-                    {item.name}
-                    {/* Animated underline on hover */}
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-white group-hover:w-16 transition-all duration-300" />
-                  </div>
-                </a>
-              ))}
-
-              {/* Features Dropdown */}
-              <div className="space-y-3">
-                <button
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="group block w-full text-center px-6 py-5 rounded-2xl bg-black/10 backdrop-blur-xl border border-white/10 text-white font-semibold text-xl hover:bg-black/20 hover:border-white/20 hover:scale-105 hover:shadow-2xl transition-all duration-500"
-                >
-                  <div className="flex items-center justify-center space-x-2">
-                    <span>Features</span>
-                    <ChevronDown
-                      size={20}
-                      className={`transform transition-transform duration-300 ${
-                        dropdownOpen
-                          ? "rotate-180"
-                          : "group-hover:translate-y-1"
-                      }`}
-                    />
-                  </div>
-                </button>
-
-                {dropdownOpen && (
-                  <div className="space-y-2 animate-fade-in">
-                    {features.map((feature, index) => (
+            <div className="flex-col bg-black/40 backdrop-blur-md items-center justify-center px-10 py-24">
+              <div className="w-full max-w-sm space-y-3">
+                {menuItems.map((item, index) => (
+                  <div key={item.name}>
+                    {item.hasDropdown ? (
+                      <div className="space-y-2">
+                        <button
+                          onClick={() => setDropdownOpen(!dropdownOpen)}
+                          className="group w-full text-center px-6 py-4 rounded-2xl bg-black/30 backdrop-blur-xl border border-white/20 text-white font-semibold text-lg hover:bg-black/40 hover:border-white/30 hover:scale-[1.02] hover:shadow-xl transition-all duration-300"
+                        >
+                          <div className="flex items-center justify-center space-x-2">
+                            <span>{item.name}</span>
+                            <ChevronDown
+                              size={18}
+                              className={`transition-transform duration-300 ${
+                                dropdownOpen
+                                  ? "rotate-180"
+                                  : "group-hover:translate-y-0.5"
+                              }`}
+                            />
+                          </div>
+                        </button>
+                      </div>
+                    ) : (
                       <a
-                        key={feature.name}
-                        href="#"
+                        href={item.href}
+                        className="group block w-full text-center px-6 py-4 rounded-2xl bg-black/30 backdrop-blur-xl border border-white/20 text-white font-semibold text-lg hover:bg-black/40 hover:border-white/30 hover:scale-[1.02] hover:shadow-xl transition-all duration-300"
                         onClick={() => setMobileOpen(false)}
-                        className="block w-full text-center px-6 py-4 rounded-xl bg-black/5 backdrop-blur-xl border border-white/5 text-white/90 font-medium text-lg hover:bg-black/15 hover:border-white/10 hover:scale-102 hover:shadow-xl transition-all duration-300"
-                        style={{ animationDelay: `${index * 100}ms` }}
+                        style={{ animationDelay: `${index * 120}ms` }}
                       >
-                        {feature.name}
+                        <div className="relative">
+                          {item.name}
+                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white group-hover:w-16 transition-all duration-300" />
+                        </div>
                       </a>
-                    ))}
+                    )}
                   </div>
-                )}
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </nav>
     </header>
   );
 }
