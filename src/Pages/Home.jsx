@@ -56,17 +56,6 @@ const skillIcons = [
   { name: "MongoDB", icon: "logos:mongodb-icon" },
 ];
 
-const codingIcons = [
-  { name: "TypeScript", icon: "vscode-icons:file-type-typescript" },
-  { name: "Python", icon: "vscode-icons:file-type-python" },
-  { name: "Java", icon: "vscode-icons:file-type-java" },
-  { name: "C++", icon: "vscode-icons:file-type-cpp" },
-  { name: "Git", icon: "vscode-icons:file-type-git" },
-  { name: "VS Code", icon: "vscode-icons:file-type-vscode" },
-  { name: "Node", icon: "vscode-icons:file-type-node" },
-  { name: "React", icon: "vscode-icons:file-type-reactjs" },
-];
-
 export default function HeroGlobe() {
   return (
     <>
@@ -89,46 +78,46 @@ export default function HeroGlobe() {
         </div>
 
         <div className="relative z-20 max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-16">
-          
           {/* Left Text */}
           <div className="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight bg-gradient-to-r from-purple-500 via-purple-300 to-indigo-400 bg-clip-text text-transparent mb-4">
-              Technology That <span className="block">Accelerates Your</span> Business Growth
+              Technology That <span className="block">Accelerates Your</span>{" "}
+              Business Growth
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-200 font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Powerful, efficient, and future-focused IT solutions built for the digital era.
+              Powerful, efficient, and future-focused IT solutions built for the
+              digital era.
             </p>
           </div>
 
           {/* Right Orbital System */}
           <div className="w-full lg:w-1/2 flex items-center justify-center order-1 lg:order-2">
             <div className="relative h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] md:h-[550px] md:w-[550px] lg:h-[600px] lg:w-[600px]">
-
               {/* --- CENTRAL CORE --- */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative">
-                  
                   {/* Center Black Sphere */}
                   <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-gradient-to-br from-gray-900 to-black rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 border border-gray-700 animate-pulse-slow">
                     <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gray-800 rounded-full overflow-hidden">
-                      
                       {/* CODE EDITOR */}
                       <div className="absolute inset-2 bg-gray-900 rounded-lg overflow-hidden">
-
                         {/* Header */}
                         <div className="flex items-center space-x-1 px-2 py-1 bg-gray-800 border-b border-gray-700">
                           <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                           <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                           <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                          <div className="text-[6px] text-gray-400 ml-2">app.js</div>
+                          <div className="text-[6px] text-gray-400 ml-2">
+                            app.js
+                          </div>
                         </div>
 
                         {/* Code */}
                         <div className="p-1 font-mono text-[4px] sm:text-[5px] leading-tight text-green-400">
                           <div className="flex">
                             <span className="text-gray-500 mr-1">1</span>
-                            <span className="text-blue-400">function</span> <span className="text-yellow-300">main</span>()
+                            <span className="text-blue-400">function</span>{" "}
+                            <span className="text-yellow-300">main</span>()
                           </div>
 
                           <div className="flex">
@@ -154,58 +143,13 @@ export default function HeroGlobe() {
                         {/* Cursor */}
                         <div className="absolute bottom-2 right-2 w-1 h-3 bg-green-400 animate-blink"></div>
                       </div>
-
-                      {/* Floating Icons (Tooltip Added) */}
-                      <div className="absolute -top-1 -right-1">
-                        <Tooltip label="TypeScript">
-                          <Icon icon="vscode-icons:file-type-typescript" className="w-3 h-3 text-blue-400 animate-float cursor-pointer" />
-                        </Tooltip>
-                      </div>
-
-                      <div className="absolute -bottom-1 -left-1">
-                        <Tooltip label="Python">
-                          <Icon icon="vscode-icons:file-type-python" className="w-3 h-3 text-yellow-400 animate-float-reverse cursor-pointer" />
-                        </Tooltip>
-                      </div>
                     </div>
                   </div>
-
-                  {/* Rotating Coding Icons Ring */}
-                  <div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full animate-spin-slow">
-                    {codingIcons.slice(0, 6).map((item, index) => {
-                      const angle = (360 / 6) * index;
-                      const r = (angle * Math.PI) / 180;
-                      const radius = 12;
-
-                      return (
-                        <div
-                          key={index}
-                          className="absolute group"
-                          style={{
-                            left: `${50 + radius * Math.sin(r)}%`,
-                            top: `${50 - radius * Math.cos(r)}%`,
-                            transform: "translate(-50%, -50%)",
-                          }}
-                        >
-                          <Tooltip label={item.name}>
-                            <Icon
-                              icon={item.icon}
-                              className="w-3 h-3 sm:w-3 sm:h-3 text-white/60 group-hover:text-green-400 transition-colors duration-300 cursor-pointer"
-                            />
-                          </Tooltip>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Glow Ring */}
-                  <div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full border border-green-500/30 animate-ping-slow"></div>
                 </div>
               </div>
 
               {/* --- ORBITAL RINGS (ALL WITH TOOLTIP) --- */}
               <div className="absolute inset-0">
-
                 {/* Ring 1 */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 border border-purple-400/30 rounded-full animate-spin-slow">
                   {skillIcons.slice(0, 4).map((item, index) => {
@@ -237,7 +181,7 @@ export default function HeroGlobe() {
                 </div>
 
                 {/* Ring 2 */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 border border-blue-400/30 rounded-full animate-spin-slow-reverse">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 animate-spin-slow-reverse">
                   {skillIcons.slice(4, 7).map((item, index) => {
                     const angle = (360 / 3) * index;
                     const r = angle * (Math.PI / 180);
@@ -339,10 +283,8 @@ export default function HeroGlobe() {
                   </Tooltip>
                 ))}
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
 

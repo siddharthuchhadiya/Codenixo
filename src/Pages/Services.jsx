@@ -1,7 +1,6 @@
 import React from "react";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import ParallaxCards from "../Components/ParallaxCards";
-import SmartCard from "../Components/SmartCard";
 
 export default function Services() {
   return (
@@ -20,7 +19,7 @@ export default function Services() {
           <Breadcrumbs />
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-bold text-white drop-shadow-md">
+        <h1 className="text-6xl sm:text-7xl font-bold text-white drop-shadow-md">
           Services
         </h1>
       </div>
@@ -28,10 +27,6 @@ export default function Services() {
 
     <div className="max-w-7xl mx-auto px-6 py-12">
       <ParallaxCards />
-    </div>
-
-    <div className="max-w-7xl mx-auto px-6">
-      <SmartCard />
     </div>
     </>
   );

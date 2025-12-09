@@ -17,7 +17,7 @@ export default function Blog() {
               <Breadcrumbs />
             </div>
     
-            <h1 className="text-4xl sm:text-5xl font-bold text-white drop-shadow-md">
+            <h1 className="text-6xl sm:text-7xl font-bold text-white drop-shadow-md">
               Blog
             </h1>
           </div>
